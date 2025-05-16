@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarthView360 - Global Environmental Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1><i class="fas fa-globe-americas"></i> EarthView360</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="data.html">Data Explorer</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Monitor Our Planet's Vital Signs</h2>
+                <p>Real-time environmental data and climate metrics to understand Earth's changing conditions</p>
+            </div>
+        </section>
+
+        <section class="snapshot">
+            <h2>Today's Earth Snapshot</h2>
+            <div class="snapshot-grid">
+                <div class="snapshot-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Global Temperature</h3>
+                    <p class="data-value" id="global-temp">+1.2°C</p>
+                    <p>above pre-industrial levels</p>
+                </div>
+                <div class="snapshot-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>CO₂ Concentration</h3>
+                    <p class="data-value" id="co2-level">418 ppm</p>
+                    <p>atmospheric CO₂</p>
+                </div>
+                <div class="snapshot-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Sea Ice Extent</h3>
+                    <p class="data-value" id="sea-ice">4.3M km²</p>
+                    <p>Arctic sea ice</p>
+                </div>
+                <div class="snapshot-card">
+                    <i class="fas fa-tint-slash"></i>
+                    <h3>Drought Index</h3>
+                    <p class="data-value" id="drought-index">Moderate</p>
+                    <p>global average</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="charts">
+            <h2>Environmental Trends</h2>
+            <div class="chart-selector">
+                <label for="chart-type">Select Metric:</label>
+                <select id="chart-type">
+                    <option value="temperature">Global Temperature</option>
+                    <option value="co2">CO₂ Levels</option>
+                    <option value="ice">Sea Ice</option>
+                    <option value="drought">Drought Index</option>
+                </select>
+            </div>
+            <div class="chart-container">
+                <canvas id="main-chart"></canvas>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>Regional Impact Map</h2>
+            <div class="map-container">
+                <div id="map">
+                    <!-- Interactive map will be inserted here -->
+                    <img src="assets/images/world-map-placeholder.jpg" alt="World Map" id="map-placeholder">
+                </div>
+            </div>
+            <div class="region-selector">
+                <label for="region">Select Region:</label>
+                <select id="region">
+                    <option value="global">Global</option>
+                    <option value="north-america">North America</option>
+                    <option value="south-america">South America</option>
+                    <option value="europe">Europe</option>
+                    <option value="africa">Africa</option>
+                    <option value="asia">Asia</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="call-to-action">
+            <h2>Make a Difference</h2>
+            <p>Understanding our environment is the first step toward positive change</p>
+            <div class="action-buttons">
+                <a href="#" class="btn primary">Learn More</a>
+                <a href="#" class="btn secondary">Share Data</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EarthView360</h3>
+                <p>Monitoring our planet's vital signs with real-time environmental data.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="data.html">Data Explorer</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Data Sources</h3>
+                <ul>
+                    <li><a href="https://www.nasa.gov/">NASA</a></li>
+                    <li><a href="https://www.noaa.gov/">NOAA</a></li>
+                    <li><a href="https://www.epa.gov/">EPA</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EarthView360. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="charts.js"></script>
+    <script src="apiHandler.js"></script>
+</body>
+</html>
