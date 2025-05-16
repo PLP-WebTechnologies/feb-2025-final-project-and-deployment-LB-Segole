@@ -1,0 +1,252 @@
+<svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .entity { 
+      fill: #f5f5f5; 
+      stroke: #333; 
+      stroke-width: 2;
+    }
+    .header { 
+      fill: #4b86b4; 
+      stroke: #333; 
+      stroke-width: 2;
+    }
+    .header-text { 
+      fill: white; 
+      font-family: Arial, sans-serif; 
+      font-size: 18px; 
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .attribute { 
+      font-family: Arial, sans-serif; 
+      font-size: 14px;
+      text-anchor: start;
+    }
+    .pk { font-weight: bold; }
+    .fk { fill: #666; font-style: italic; }
+    .relationship { 
+      stroke: #333; 
+      stroke-width: 2; 
+      marker-end: url(#arrow); 
+      fill: none;
+    }
+    .relationship-text {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      fill: #333;
+      text-anchor: middle;
+    }
+  </style>
+  
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- INSTITUTIONS -->
+  <g transform="translate(50, 50)">
+    <rect class="entity" width="200" height="220" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">INSTITUTIONS</text>
+    
+    <text x="10" y="50" class="attribute pk">institution_id (PK)</text>
+    <text x="10" y="70" class="attribute">name</text>
+    <text x="10" y="90" class="attribute">country</text>
+    <text x="10" y="110" class="attribute">region</text>
+    <text x="10" y="130" class="attribute">website</text>
+    <text x="10" y="150" class="attribute">established_year</text>
+    <text x="10" y="170" class="attribute">is_african</text>
+    <text x="10" y="190" class="attribute">created_at</text>
+    <text x="10" y="210" class="attribute">updated_at</text>
+  </g>
+  
+  <!-- AUTHORS -->
+  <g transform="translate(350, 50)">
+    <rect class="entity" width="200" height="240" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">AUTHORS</text>
+    
+    <text x="10" y="50" class="attribute pk">author_id (PK)</text>
+    <text x="10" y="70" class="attribute">first_name</text>
+    <text x="10" y="90" class="attribute">last_name</text>
+    <text x="10" y="110" class="attribute">email</text>
+    <text x="10" y="130" class="attribute fk">institution_id (FK)</text>
+    <text x="10" y="150" class="attribute">orcid_id</text>
+    <text x="10" y="170" class="attribute">h_index</text>
+    <text x="10" y="190" class="attribute">bio</text>
+    <text x="10" y="210" class="attribute">is_active</text>
+    <text x="10" y="230" class="attribute">created_at</text>
+  </g>
+  
+  <!-- TOPICS -->
+  <g transform="translate(50, 330)">
+    <rect class="entity" width="200" height="160" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">TOPICS</text>
+    
+    <text x="10" y="50" class="attribute pk">topic_id (PK)</text>
+    <text x="10" y="70" class="attribute">name</text>
+    <text x="10" y="90" class="attribute">field</text>
+    <text x="10" y="110" class="attribute">description</text>
+    <text x="10" y="130" class="attribute fk">parent_topic_id (FK)</text>
+    <text x="10" y="150" class="attribute">created_at</text>
+  </g>
+  
+  <!-- PAPERS -->
+  <g transform="translate(650, 50)">
+    <rect class="entity" width="200" height="280" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">PAPERS</text>
+    
+    <text x="10" y="50" class="attribute pk">paper_id (PK)</text>
+    <text x="10" y="70" class="attribute">title</text>
+    <text x="10" y="90" class="attribute">abstract</text>
+    <text x="10" y="110" class="attribute">publication_year</text>
+    <text x="10" y="130" class="attribute">doi</text>
+    <text x="10" y="150" class="attribute">journal</text>
+    <text x="10" y="170" class="attribute">volume</text>
+    <text x="10" y="190" class="attribute">issue</text>
+    <text x="10" y="210" class="attribute">pages</text>
+    <text x="10" y="230" class="attribute">publication_status</text>
+    <text x="10" y="250" class="attribute fk">topic_id (FK)</text>
+    <text x="10" y="270" class="attribute">citation_count</text>
+  </g>
+  
+  <!-- PAPER_AUTHORS -->
+  <g transform="translate(350, 330)">
+    <rect class="entity" width="200" height="140" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">PAPER_AUTHORS</text>
+    
+    <text x="10" y="50" class="attribute pk">paper_id (PK, FK)</text>
+    <text x="10" y="70" class="attribute pk">author_id (PK, FK)</text>
+    <text x="10" y="90" class="attribute">author_position</text>
+    <text x="10" y="110" class="attribute">is_corresponding</text>
+    <text x="10" y="130" class="attribute">created_at</text>
+  </g>
+  
+  <!-- CITATIONS -->
+  <g transform="translate(650, 370)">
+    <rect class="entity" width="200" height="120" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">CITATIONS</text>
+    
+    <text x="10" y="50" class="attribute pk">citation_id (PK)</text>
+    <text x="10" y="70" class="attribute fk">citing_paper_id (FK)</text>
+    <text x="10" y="90" class="attribute fk">cited_paper_id (FK)</text>
+    <text x="10" y="110" class="attribute">citation_context</text>
+  </g>
+  
+  <!-- COLLABORATIONS -->
+  <g transform="translate(350, 500)">
+    <rect class="entity" width="200" height="140" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">COLLABORATIONS</text>
+    
+    <text x="10" y="50" class="attribute pk">author1_id (PK, FK)</text>
+    <text x="10" y="70" class="attribute pk">author2_id (PK, FK)</text>
+    <text x="10" y="90" class="attribute">first_collaboration_year</text>
+    <text x="10" y="110" class="attribute">collaboration_count</text>
+    <text x="10" y="130" class="attribute">created_at</text>
+  </g>
+  
+  <!-- KEYWORDS -->
+  <g transform="translate(50, 520)">
+    <rect class="entity" width="200" height="80" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">KEYWORDS</text>
+    
+    <text x="10" y="50" class="attribute pk">keyword_id (PK)</text>
+    <text x="10" y="70" class="attribute">term</text>
+  </g>
+  
+  <!-- PAPER_KEYWORDS -->
+  <g transform="translate(650, 520)">
+    <rect class="entity" width="200" height="100" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">PAPER_KEYWORDS</text>
+    
+    <text x="10" y="50" class="attribute pk">paper_id (PK, FK)</text>
+    <text x="10" y="70" class="attribute pk">keyword_id (PK, FK)</text>
+    <text x="10" y="90" class="attribute">relevance_score</text>
+  </g>
+  
+  <!-- GRANTS -->
+  <g transform="translate(50, 630)">
+    <rect class="entity" width="200" height="180" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">GRANTS</text>
+    
+    <text x="10" y="50" class="attribute pk">grant_id (PK)</text>
+    <text x="10" y="70" class="attribute">name</text>
+    <text x="10" y="90" class="attribute">funding_agency</text>
+    <text x="10" y="110" class="attribute">amount</text>
+    <text x="10" y="130" class="attribute">currency</text>
+    <text x="10" y="150" class="attribute">start_date</text>
+    <text x="10" y="170" class="attribute">end_date</text>
+  </g>
+  
+  <!-- PAPER_GRANTS -->
+  <g transform="translate(350, 670)">
+    <rect class="entity" width="200" height="80" rx="5" />
+    <rect class="header" width="200" height="30" rx="5" ry="5" />
+    <text x="100" y="20" class="header-text">PAPER_GRANTS</text>
+    
+    <text x="10" y="50" class="attribute pk">paper_id (PK, FK)</text>
+    <text x="10" y="70" class="attribute pk">grant_id (PK, FK)</text>
+  </g>
+  
+  <!-- Relationships -->
+  <!-- INSTITUTIONS to AUTHORS -->
+  <path d="M 250,140 L 350,140" class="relationship" />
+  <text x="300" y="130" class="relationship-text">has</text>
+  
+  <!-- TOPICS to PAPERS -->
+  <path d="M 250,400 C 450,400 450,250 650,250" class="relationship" />
+  <text x="450" y="380" class="relationship-text">categorizes</text>
+  
+  <!-- TOPICS self-relationship -->
+  <path d="M 150,490 C 150,520 30,520 30,430 C 30,340 50,340 50,330" class="relationship" />
+  <text x="20" y="430" class="relationship-text">has subtopic</text>
+  
+  <!-- PAPERS to PAPER_AUTHORS -->
+  <path d="M 750,330 L 550,400" class="relationship" />
+  <text x="650" y="350" class="relationship-text">has</text>
+  
+  <!-- AUTHORS to PAPER_AUTHORS -->
+  <path d="M 450,290 L 450,330" class="relationship" />
+  <text x="490" y="310" class="relationship-text">contributes to</text>
+  
+  <!-- PAPERS to CITATIONS (citing) -->
+  <path d="M 730,330 L 730,370" class="relationship" />
+  <text x="770" y="350" class="relationship-text">cites</text>
+  
+  <!-- PAPERS to CITATIONS (cited) -->
+  <path d="M 770,330 L 770,370" class="relationship" />
+  <text x="810" y="350" class="relationship-text">is cited</text>
+  
+  <!-- AUTHORS to COLLABORATIONS (author1) -->
+  <path d="M 370,290 C 370,380 300,380 300,550 C 300,580 350,580 350,570" class="relationship" />
+  <text x="270" y="420" class="relationship-text">collaborates as author1</text>
+  
+  <!-- AUTHORS to COLLABORATIONS (author2) -->
+  <path d="M 430,290 C 430,380 500,380 500,550 C 500,580 550,580 550,570" class="relationship" />
+  <text x="530" y="420" class="relationship-text">collaborates as author2</text>
+  
+  <!-- PAPERS to PAPER_KEYWORDS -->
+  <path d="M 850,330 C 900,330 900,470 850,470 C 850,520 850,520 850,520" class="relationship" />
+  <text x="920" y="400" class="relationship-text">has</text>
+  
+  <!-- KEYWORDS to PAPER_KEYWORDS -->
+  <path d="M 250,560 L 650,560" class="relationship" />
+  <text x="450" y="540" class="relationship-text">is used in</text>
+  
+  <!-- PAPERS to PAPER_GRANTS -->
+  <path d="M 650,190 C 580,190 580,600 400,600 C 400,670 400,670 400,670" class="relationship" />
+  <text x="540" y="580" class="relationship-text">is funded by</text>
+  
+  <!-- GRANTS to PAPER_GRANTS -->
+  <path d="M 250,720 L 350,720" class="relationship" />
+  <text x="300" y="700" class="relationship-text">funds</text>
+</svg>
